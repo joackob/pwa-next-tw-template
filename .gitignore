@@ -37,5 +37,7 @@ next-env.d.ts
 
 # pwa
 **/public/workbox-*.js
+**/public/workbox-*.js.*
 **/public/sw.js
+**/public/sw.js.*
 **/public/worker-*.js

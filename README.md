@@ -1,16 +1,46 @@
 # Progressive Web App Example
 
-This example uses [`next-pwa`](https://github.com/shadowwalker/next-pwa) to create a progressive web app (PWA) powered by [Workbox](https://developers.google.com/web/tools/workbox/).
+Este template para la creación de proyectos basados en NextJS como Progressive Web App.
 
-## Deploy your own
+## Entorno
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+### Git
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/progressive-web-app&project-name=progressive-web-app&repository-name=progressive-web-app)
+Asegurarse de tener instalado `git` . Esto se puede revisar muy facilmente a trevez del comando `git --version` . En caso de no estar instalado, se puede hacer a travez de los siguientes paso
 
-## How to use
+- En linux, a travez del comando `sudo apt install git`.
+- En Windows, a travez de la pagina oficial https://git-scm.com/
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+### NodeJS
+
+Procurar tener actualizado `node.js` a la versión lts. Para saber si Node.js esta instalado en su sistema, abra una terminal y ejecute el siguiente comando `npm doctor`. El resultado debe ser la versión de `node ` y `npm`instalada. Si el comando no se encuentra o no se encuentran actualizados, se puede instalar `Node.js` mediante alguno de los siguientes pasos
+
+- En windows, desde la [pagina oficial](https://nodejs.org/en/), descargando y ejecutando la versión `lts`.
+
+- En Linux, a través de `nvm`.
+
+  - Abrir una terminal y ejecutar alguno de los siguientes comando
+
+    ```bash
+    curl -o- [https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh](https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh) | bash
+    ```
+
+    ```bash
+    wget -qO- [https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh](https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh) | bash
+    ```
+
+  - Cerrar la terminal y abrir otra para ejecutar el siguiente comando para verificar la correcta instalación`nvm --version` . Una vez observada la versión, ejecutar el siguiente comando para instalar Node.js
+
+    ```bash
+    nvm install --lts
+
+## Instalación y ejecución
+
+- 🛠Para instalar las dependencias ejecutar el comando `npm install`
+- ⚒Para ejecutar el playground, usar el comando `npm run dev`
+- ⚒Para construir el proyecto, usar el comando `npm run build`
+
+Si desea, puede crear un ejemplo por su propia cuenta con los siguientes comandos
 
 ```bash
 npx create-next-app --example progressive-web-app progressive-web-app
@@ -20,4 +50,9 @@ yarn create next-app --example progressive-web-app progressive-web-app
 pnpm create next-app --example progressive-web-app progressive-web-app
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## Características
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [NextJS](https://nextjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [HeroIcons](https://heroicons.com/)

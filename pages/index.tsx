@@ -1,58 +1,50 @@
-import styles from "../styles/Home.module.css";
+import { promises as fs } from "fs";
+import path from "path";
 
-export default function Home() {
+export default function Home({ poem }: { poem: string[] }) {
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+    <div className="w-screen h-screen bg-red-400 flex justify-center items-center">
+      <div className="p-3 w-5/6 max-w-md rounded-md border-white border-2 flex flex-col items-center  space-y-4 ">
+        <div className="w-16 h-16 bg-[url('/img/sakura.jpg')] bg-cover rounded-full" />
+        <div className="text-white">
+          {poem.map((line, index) => (
+            <p
+              key={index}
+              className={`text-center text-xl ${
+                index === poem.length - 1 ? "text-red-800" : ""
+              }`}
+            >
+              {line}
             </p>
-          </a>
+          ))}
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-8 h-8 text-white"
         >
-          Powered by{" "}
-        </a>
-      </footer>
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"
+          />
+        </svg>
+      </div>
     </div>
   );
 }
+
+export const getStaticProps = async () => {
+  const poemDir = path.join(process.cwd(), "/poem/poem.txt");
+  const text = await fs.readFile(poemDir, "utf-8");
+  const poem = text.split("\n");
+
+  return {
+    props: {
+      poem,
+    },
+  };
+};
